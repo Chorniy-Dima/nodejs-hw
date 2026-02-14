@@ -99,7 +99,7 @@ export const requestResetEmail = async (req, res) => {
   const user = await User.findOne({ email });
 
   if (!user) {
-    res.status(200).json({ message: "Password reset email sent successfullyyy" });
+    return res.status(200).json({ message: "Password reset email sent successfullyyy" });
   }
 
   const resetToken = jwt.sign({ sub: user._id, email }, process.env.JWT_SECRET, { expiresIn: "15m" });
@@ -144,7 +144,7 @@ export const resetPassword = async (req, res) => {
   });
 
   if (!user) {
-    throw createHttpError(401, "User not found");
+    throw createHttpError(404, "User not found");
   }
 
   const hashedPwd = await bcrypt.hash(password, 10);
