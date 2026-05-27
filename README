@@ -1,0 +1,55 @@
+# NoteHub API
+
+A backend REST API for a note-taking application built with Node.js and Express.
+
+## Features
+
+- User authentication (register, login, logout)
+- JWT-based authorization with refresh tokens
+- Password reset via email
+- CRUD operations for notes
+- Protected routes for authenticated users
+- Avatar upload support
+- Request validation using Joi + celebrate middleware
+
+## Tech Stack
+
+- Node.js
+- Express.js
+- MongoDB
+- JWT Authentication
+- Multer (file uploads)
+- Nodemailer (email service)
+- Celebrate / Joi (validation)
+
+## Auth Routes
+
+- `POST /auth/register` – register new user
+- `POST /auth/login` – user login
+- `POST /auth/logout` – logout user
+- `POST /auth/refresh` – refresh session
+- `POST /auth/request-reset-email` – request password reset email
+- `POST /auth/reset-password` – reset password
+
+## Notes Routes (protected)
+
+- `GET /notes` – get all notes
+- `GET /notes/:noteId` – get note by ID
+- `POST /notes` – create new note
+- `DELETE /notes/:noteId` – delete note
+- `PATCH /notes/:noteId` – update note
+
+## User Routes
+
+- `PATCH /users/me/avatar` – update user avatar (file upload)
+
+## Authentication
+
+Most routes require JWT authentication via middleware.
+
+## Installation
+
+```bash
+npm install
+npm run dev
+```
